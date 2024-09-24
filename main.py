@@ -9,18 +9,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import NoSuchElementException
-import unittest
 
 
-class TestUrbanRoutes (unittest.TestCase):
+class TestUrbanRoutes ():
 
     driver = None
 
     @classmethod
-    def setUpClass(cls):
-            print("Configurando la clase...")
-            cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-            print("Driver inicializado:", cls.driver)
 
     def setup_class(cls):
         options = Options()

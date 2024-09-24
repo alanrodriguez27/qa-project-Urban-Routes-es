@@ -1,4 +1,6 @@
 # Proyecto Automation Test Urban Routes 
+## Alan Rodriguez
+## sprint 8
 
 ## Descripción del proyecto
 
@@ -8,6 +10,14 @@ Los links del servidor y datos de pruebas se encuentran en el archivo data.py, l
 
 ## Requisitos
 Para la correcta ejecución de las pruebas se es necesario instalar: Python, Pytest , Selenium, WebDriver Manager 
+
+## Instalacion 
+pip install selenium
+pip install webdriver-manager
+pip install pytest
+
+## Ejecucion de pruebas
+pytest main.py 
 
 ## Descripción de tecnologías y técnicas utilizadas
 Dentro de las tecnologías fue Python como lenguaje de programación y para la realización de las pruebas se utlizó Pytest (PyTest es un marco de trabajo que permite realizar pruebas unitarias para un software en Python.)

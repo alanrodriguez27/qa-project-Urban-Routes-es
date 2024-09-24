@@ -9,11 +9,11 @@ from selenium.webdriver.support import expected_conditions
 
 class UrbanRoutesPage:
 
-    from_field = (By.ID, 'from')
-    to_field = (By.ID, 'to')
-    taxi_button_field = (By.XPATH, '//button[text()="Pedir un taxi"]')
+    from_field = (By.ID, "from")
+    to_field = (By.ID, "to")
+    taxi_button_field = (By.CSS_SELECTOR, "button.button.round")
     comfort_tariff_field = (By.XPATH, "//*[@class='tcard-title' and text()='Comfort']")
-    phone_button_field_1 = (By.XPATH, '//button[text()="Pedir un taxi"]')
+    phone_button_field_1 = (By.XPATH, "//div[text()='Número de teléfono']")
     phone_number_field_2 = (By.ID, 'phone')
     next_button_locator = (By.XPATH, "//*[@class='button full' and text()='Siguiente']")
     code_phone = (By.ID, "code")
@@ -75,17 +75,17 @@ class UrbanRoutesPage:
         phone_button.click()
 
     def fill_phone_number(self, phone_number):
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
         phone_number_field = wait.until(ec.visibility_of_element_located(self.phone_number_field_2))
         phone_number_field.clear()
         phone_number_field.send_keys(phone_number)
-        next_button = WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(self.next_button_locator))
+        next_button = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(self.next_button_locator))
         next_button.click()
         code = helpers.retrieve_phone_code(self.driver)
-        code_field = WebDriverWait(self.driver, 3).until(ec.visibility_of_element_located(self.code_phone))
+        code_field = WebDriverWait(self.driver, 20).until(ec.visibility_of_element_located(self.code_phone))
         code_field.clear()
         code_field.send_keys(code)
-        button_confirm = WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(self.button_confirm_locator))
+        button_confirm = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(self.button_confirm_locator))
         button_confirm.click()
 
     def get_phone_number(self):
@@ -96,20 +96,20 @@ class UrbanRoutesPage:
 
 # Prueba 4 - metodo de pago
     def click_payment_method_card_button(self):
-        payment_button = WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(self.payment_method_button_field))
+        payment_button = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(self.payment_method_button_field))
         payment_button.click()
-        card_button = WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable(self.credit_card_field))
+        card_button = WebDriverWait(self.driver, 20).until(ec.element_to_be_clickable(self.credit_card_field))
         card_button.click()
 
     def fill_credit_number_card(self, card):
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
         card_number_field = wait.until(ec.visibility_of_element_located(self.credit_card_field))
         card_number_field.clear()
         card_number_field.send_keys(card)
         card_number_field.send_keys(Keys.TAB)
 
     def fill_credit_cvv_card(self, cvv):
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
         cvv_number_field = wait.until(ec.visibility_of_element_located(self.cvv_field))
         cvv_number_field.clear()
         cvv_number_field.send_keys(cvv)
