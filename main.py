@@ -17,12 +17,13 @@ class TestUrbanRoutes ():
 
     @classmethod
 
-    def setup_class(cls):
+    def setupclass(cls):
         options = Options()
         options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
         cls.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-    def test_set_route(self):
+
+    def testsetroute(self):
             self.driver.get(data.urban_routes_url)
             WebDriverWait(self.driver, 10).until(ec.presence_of_element_located((By.ID, 'from')))
             routes_page = UrbanRoutesPage(self.driver)
@@ -50,15 +51,25 @@ class TestUrbanRoutes ():
     def test_phone_number(self):
             self.driver.get(data.urban_routes_url)
             routes_page = UrbanRoutesPage(self.driver)
+            time.sleep(1)
             address_from = data.address_from
+            time.sleep(1)
             address_to = data.address_to
+            time.sleep(1)
             routes_page.set_from(address_from)
+            time.sleep(1)
             routes_page.set_to(address_to)
+            time.sleep(1)
             routes_page.click_taxi_button()
+            time.sleep(1)
             routes_page.click_comfort_tariff()
+            time.sleep(1)
             routes_page.click_phone()
+            time.sleep(1)
             phone_number_test = data.phone_number
+            time.sleep(1)
             routes_page.fill_phone_number(phone_number_test)
+            time.sleep(1)
             actual_phone_number = routes_page.get_phone_number()
             assert actual_phone_number == phone_number_test, f"Número actual: {actual_phone_number}"
 
@@ -66,26 +77,42 @@ class TestUrbanRoutes ():
     def test_credit_card(self):
             self.driver.get(data.urban_routes_url)
             routes_page = UrbanRoutesPage(self.driver)
+            time.sleep(1)
             address_from = data.address_from
+            time.sleep(1)
             address_to = data.address_to
+            time.sleep(1)
             routes_page.set_from(address_from)
+            time.sleep(1)
             routes_page.set_to(address_to)
+            time.sleep(1)
             routes_page.click_taxi_button()
+            time.sleep(1)
             routes_page.click_comfort_tariff()
+            time.sleep(1)
             routes_page.click_phone()
+            time.sleep(1)
             phone_number_test = data.phone_number
+            time.sleep(1)
             routes_page.fill_phone_number(phone_number_test)
+            time.sleep(1)
             routes_page.click_payment_method_card_button()
+            time.sleep(1)
             card_numer_test = data.card_number
+            time.sleep(1)
             cvv_test = data.card_code
+            time.sleep(1)
             routes_page.fill_credit_number_card(card_numer_test)
+            time.sleep(1)
             routes_page.fill_credit_cvv_card(cvv_test)
+            time.sleep(1)
             card_number_field = WebDriverWait(self.driver, 10).until(
                 ec.visibility_of_element_located(routes_page.card_number))
             assert card_number_field.get_attribute('value') == card_numer_test, "El número de tarjeta no coincide."
             cvv_number_field = WebDriverWait(self.driver, 10).until(
                 ec.visibility_of_element_located(routes_page.cvv_field))
             assert cvv_number_field.get_attribute('value') == cvv_test, "El CVV no coincide."
+
 
     def test_message_driver(self):
             self.driver.get(data.urban_routes_url)
@@ -108,12 +135,19 @@ class TestUrbanRoutes ():
     def test_order_blanket_scarves(self):
             self.driver.get(data.urban_routes_url)
             routes_page = UrbanRoutesPage(self.driver)
+            time.sleep(1)
             routes_page.set_from(data.address_from)
+            time.sleep(1)
             routes_page.set_to(data.address_to)
+            time.sleep(1)
             routes_page.click_taxi_button()
+            time.sleep(1)
             routes_page.click_comfort_tariff()
+            time.sleep(1)
             routes_page.click_blanket_scarves()
+            time.sleep(1)
             slider_locator = (By.XPATH, "//*[@class='slider round']")
+            time.sleep(1)
             slider_field = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located(slider_locator))
             actual_slider = slider_field.get_attribute('class')
             assert 'data-slider-select-id' in actual_slider, "El slider no se seleccionó correctamente"
@@ -136,10 +170,23 @@ class TestUrbanRoutes ():
             assert counter_number == data.ice_cream, f"La cantidad no coincide"
 
     def test_order_taxi(self):
-            routes_page = UrbanRoutesPage(self.driver)
-            routes_page.select_modal_order_taxi()
-            assert routes_page.check_order_taxi_is_enabled() == True
-            assert 'Pedir un taxi' in routes_page.check_text_order_taxi()
+        self.driver.get(data.urban_routes_url)
+        routes_page = UrbanRoutesPage(self.driver)
+        WebDriverWait(self.driver, 10).until(ec.presence_of_element_located((By.ID, 'from')))
+        address_from = data.address_from
+        time.sleep(1)
+        address_to = data.address_to
+        time.sleep(1)
+        routes_page.set_from(address_from)
+        time.sleep(1)
+        routes_page.set_to(address_to)
+        time.sleep(1)
+        routes_page.click_taxi_button()
+        time.sleep(1)
+        routes_page.click_modal_order_taxi()
+        assert routes_page.check_order_taxi_is_enabled() == True
+        assert 'Pedir un taxi' in routes_page.check_text_order_taxi()
+
 
     # Se agrego assert
 

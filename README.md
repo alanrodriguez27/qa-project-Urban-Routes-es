@@ -24,12 +24,11 @@ Dentro de las tecnologías fue Python como lenguaje de programación y para la r
 Las pruebas a relizar fueron mediante el metodo POM, con la ayuda de localizadores de cada elemento a utilizar en las pruebas, tambien se utilizo init para la construccion de la clase UrbanRoutes y sus funciones de atributos
 
 Casos de Prueba
-test_set_route: Verifica que las direcciones de origen y destino se configuren correctamente.
-test_set_comfort_tariff: Asegura que se seleccione la tarifa de confort.
-test_phone_number: Verifica la entrada de un número de teléfono.
-test_credit_card: Confirma que la información de la tarjeta de crédito se llena correctamente.
-test_message_driver: Comprueba que el mensaje al conductor se envíe correctamente.
-test_order_blanket_scarves: Asegura que se seleccionen mantas en el pedido.
-test_order_ice_cream: Verifica que se ordene la cantidad correcta de helados.
-test_order_taxi: Comprueba que la opción de pedir un taxi esté habilitada.
-
+test_set_route: Verifica que se puedan establecer correctamente las direcciones de origen y destino.
+test_select_comfort_rate: Verifica la selección de la tarifa Comfort.
+test_entrance_phone_number: Valida que se pueda ingresar un número de teléfono.
+test_payment_button: Comprueba que se pueda agregar un método de pago y verifica su correcta selección.
+test_message_to_driver: Comprueba que se pueda enviar un mensaje al conductor y que se muestre correctamente.
+test_select_blanket_scarves: Asegura que la opción de solicitar mantas y pañuelos esté habilitada.
+test_select_ice_cream: (Agregar este método en el código) Verifica que se pueda seleccionar una cantidad específica de helados.
+test_order_a_taxi: Verifica que se pueda abrir el modal para pedir un taxi y que la opción esté habilitada, así como que el texto correspondiente se muestre correctamente.
